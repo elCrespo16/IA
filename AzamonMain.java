@@ -19,6 +19,7 @@ public class AzamonMain {
 
         AzamonBoard aBoard = new AzamonBoard(aInfo);
         aBoard.generateInicialState();
+        aBoard.getNextStates();
         boolean correct=true;
         do {
             System.out.println("Selecciona algoritmo: HillC o SimulatedAnn");

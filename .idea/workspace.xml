@@ -19,9 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="Estado Inicial &quot;acabado&quot;">
+    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="AzamonBoard actualizado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AzamonBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/AzamonBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AzamonMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/AzamonMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IA/IA/Azamon/AzamonBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/IA/Azamon/AzamonBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +143,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="952cc3af-58a8-4dcf-8a06-8353f7609946" name="Default" comment="" />
+      <changelist id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="AzamonBoard actualizado" />
       <created>1602780284030</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -154,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602781635592</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="AzamonBoard actualizado">
+      <created>1602795870198</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602795870198</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,33 +192,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Estado Inicial &quot;acabado&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Estado Inicial &quot;acabado&quot;" />
+    <MESSAGE value="AzamonBoard actualizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="AzamonBoard actualizado" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1602781624122">
+    <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602795731930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602781624122" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1602781624122">
+    <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602795731930" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1602797911014">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602781624122" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1602781624122">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602797911014" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1602797911013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602781624122" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1602781624122">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602797911013" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1602797911013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602781624122" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602797911013" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1602797911013">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602797911013" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1602780581015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1602780581015" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602781641673">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602796053285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602781641673" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602796053285" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/IA$AzamonMain.ic" NAME="AzamonMain Coverage Results" MODIFIED="1602774361765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
