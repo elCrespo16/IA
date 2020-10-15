@@ -1,4 +1,6 @@
 import IA.Azamon.Paquetes;
+import IA.Azamon.Transporte;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,6 +29,7 @@ public class AzamonMain {
         }
         //Datos Basicos
         Paquetes paquetes = new Paquetes(npaquetes,seed);
+        Transporte transporte = new Transporte(paquetes,1.2D,seed);
 
         if(algorithm.equals("HillC")){
             System.out.println("Has elegido Hill Climbing");
