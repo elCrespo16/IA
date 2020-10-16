@@ -1,5 +1,6 @@
-import IA.Azamon.AzamonBoard;
-import IA.Azamon.AzamonInfo;
+package src.com.project;
+
+import src.com.project.state.AzamonBoard;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class AzamonMain {
 
         AzamonBoard aBoard = new AzamonBoard(aInfo);
         aBoard.generateInicialState();
-        aBoard.getNextStates();
+        aBoard.getSuccessors(null);
         boolean correct=true;
         do {
             System.out.println("Selecciona algoritmo: HillC o SimulatedAnn");

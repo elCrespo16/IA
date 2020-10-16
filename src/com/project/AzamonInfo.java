@@ -1,4 +1,7 @@
-package IA.Azamon;
+package src.com.project;
+
+import IA.Azamon.Paquetes;
+import IA.Azamon.Transporte;
 
 import java.io.BufferedReader;
 import java.io.IOException;
