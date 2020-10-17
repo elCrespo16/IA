@@ -9,28 +9,30 @@ import java.io.InputStreamReader;
 import java.util.Random;
 
 public class AzamonInfo {
-    private Paquetes paquetes;
-    private Transporte transporte;
+    public final Paquetes paquetes;
+    public final Transporte transporte;
 
-    public AzamonInfo() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Numero de paquetes:");
-        int npaquetes = Integer.parseInt(reader.readLine());
-        System.out.println("Numero de semilla o rand:");
-        String sd = reader.readLine();
-        int seed = 0;
-        if(sd.equals("rand")){
-            Random myRandom=new Random();
-            seed = myRandom.nextInt(101);
-        }
-        else {
-            seed = Integer.parseInt(sd);
-        }
-        this.paquetes = new Paquetes(npaquetes,seed);
-        this.transporte = new Transporte(paquetes,1.2D,seed);
+    public AzamonInfo(Paquetes paquetes, Transporte transporte) {
+        this.paquetes = paquetes;
+        this.transporte = transporte;
     }
 
-    public Paquetes getPaquetes() {return paquetes;}
-    public Transporte getTransporte() {return transporte;}
+    public static AzamonInfo reader() throws IOException {
+        int npaquetes; int seed; double proportion;
+        BufferedReader reader; String seedStr; Paquetes paquetes; Transporte transporte;
+
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Numero de la semilla o [random]:"); seedStr = reader.readLine();
+        System.out.println("Numero de paquetes:"); npaquetes = Integer.parseInt(reader.readLine());
+        System.out.println("Proporcion:"); proportion = Double.parseDouble(reader.readLine());
+
+        if(seedStr.equals("rand")) seed=(new Random()).nextInt(101);
+        else seed = Integer.parseInt(seedStr);
+
+        paquetes = new Paquetes(npaquetes,seed);
+        transporte = new Transporte(paquetes,proportion,seed);
+
+        return new AzamonInfo(paquetes,transporte);
+    }
 
 }

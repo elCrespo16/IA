@@ -17,8 +17,8 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     public AzamonBoard(AzamonInfo aInfo) {
         this.azamonInfo = aInfo;
-        assignedOffer = new int[aInfo.getPaquetes().size()];
-        actualWeight = new double[aInfo.getTransporte().size()];
+        assignedOffer = new int[aInfo.paquetes.size()];
+        actualWeight = new double[aInfo.transporte.size()];
         for(double value : actualWeight) value=0.0D;
     }
 
@@ -33,10 +33,10 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     private void assignPackagesToOffers(int priority) {
         int packagePointer = 0;
-        for (Paquete paquete : azamonInfo.getPaquetes()) {
+        for (Paquete paquete : azamonInfo.paquetes) {
             if (paquete.getPrioridad()==priority) {
                 int offerPointer = 0;
-                for (Oferta oferta : azamonInfo.getTransporte()) {
+                for (Oferta oferta : azamonInfo.transporte) {
 
                     double maxWeight = oferta.getPesomax();
                     double sumWeight = actualWeight[offerPointer] + paquete.getPeso();
@@ -73,13 +73,13 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         double heuristic=0.0D;
         AzamonState oldState = updateState((AzamonState) state);
 
-        //FUNCION HEURISTICA
+        //FUNCION HEURISTICA DE COSTE
         //  <--
         // Only value
         double cost=0.0D;
         for(int i=actualWeight.length-1;i>=0;--i) {
-            int day = azamonInfo.getTransporte().get(i).getDias();
-            cost+=actualWeight[i]*azamonInfo.getTransporte().get(i).getPrecio();
+            int day = azamonInfo.transporte.get(i).getDias();
+            cost+=actualWeight[i]*azamonInfo.transporte.get(i).getPrecio();
             if (day==3 || day==4) cost+=actualWeight[i]*0.25D;
             else if (day==5) cost+=actualWeight[i]*0.25D*2;
         }
@@ -94,7 +94,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     private boolean isPrioritySatisfable(Oferta oferta, Paquete paquete) {
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
-        if (difference>=0 ) return true;
+        if (difference<=1 ) return true;
         /*
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
         if (difference==0 || difference==1) return true;
@@ -110,16 +110,16 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
 
     private void addMovableSuccessors(List<Successor> list) {
-        int packagesSize = azamonInfo.getPaquetes().size();
-        int offersSize = azamonInfo.getTransporte().size();
+        int packagesSize = azamonInfo.paquetes.size();
+        int offersSize = azamonInfo.transporte.size();
 
         for(int pack = 0; pack<packagesSize; ++pack) {
             for(int offer = 0; offer<offersSize; ++offer) {
                 if (offer != assignedOffer[pack]) {
-                    double packageWeight = azamonInfo.getPaquetes().get(pack).getPeso();
-                    double offerMaxWeight = azamonInfo.getTransporte().get(offer).getPesomax();
+                    double packageWeight = azamonInfo.paquetes.get(pack).getPeso();
+                    double offerMaxWeight = azamonInfo.transporte.get(offer).getPesomax();
                     boolean satisfablePriority =
-                            isPrioritySatisfable(azamonInfo.getTransporte().get(offer), azamonInfo.getPaquetes().get(pack));
+                            isPrioritySatisfable(azamonInfo.transporte.get(offer), azamonInfo.paquetes.get(pack));
                     if (packageWeight+actualWeight[offer]<=offerMaxWeight && satisfablePriority) {
                         AzamonState newBoard = new AzamonMoveState(pack,offer);
                         list.add(new Successor("m"+ pack + "." + offer,newBoard));
@@ -134,7 +134,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     }
     //FUNCIONES FRIEND
     public void __move__(int pack, int offer) {
-        double packageWeight = azamonInfo.getPaquetes().get(pack).getPeso();
+        double packageWeight = azamonInfo.paquetes.get(pack).getPeso();
         actualWeight[assignedOffer[pack]]-=packageWeight;
         actualWeight[offer]+=packageWeight;
         assignedOffer[pack]=offer;

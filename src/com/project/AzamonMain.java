@@ -22,7 +22,7 @@ public class AzamonMain {
 
 
         //Fill Information
-        AzamonInfo aInfo = new AzamonInfo();
+        AzamonInfo aInfo = AzamonInfo.reader();
 
         AzamonBoard aBoard = new AzamonBoard(aInfo);
         aBoard.generateInicialState();
