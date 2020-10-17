@@ -26,7 +26,7 @@ public class AzamonInfo {
         System.out.println("Numero de paquetes:"); npaquetes = Integer.parseInt(reader.readLine());
         System.out.println("Proporcion:"); proportion = Double.parseDouble(reader.readLine());
 
-        if(seedStr.equals("rand")) seed=(new Random()).nextInt(101);
+        if(seedStr.equals("random")) seed=(new Random()).nextInt(101);
         else seed = Integer.parseInt(seedStr);
 
         paquetes = new Paquetes(npaquetes,seed);

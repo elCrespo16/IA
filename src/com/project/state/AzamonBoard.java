@@ -17,19 +17,50 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     public AzamonBoard(AzamonInfo aInfo) {
         this.azamonInfo = aInfo;
-        assignedOffer = new int[aInfo.paquetes.size()];
-        actualWeight = new double[aInfo.transporte.size()];
-        for(double value : actualWeight) value=0.0D;
+        this.assignedOffer = new int[aInfo.paquetes.size()];
+        this.actualWeight = new double[aInfo.transporte.size()];
     }
 
-    public AzamonState generateInicialState() {
-
+    public AzamonState generateInicialState(/*SE PODRIA ESPECIFICAR AQUI CON UN ENUM*/) {
+        //HACER GENERACION BASICA Y GENERACION INTELIGENTE
         assignPackagesToOffers(0);
         assignPackagesToOffers(1);
         assignPackagesToOffers(2);
-
         return null;
     }
+
+    @Override
+    public List getSuccessors(Object state) {
+        updateState((AzamonState) state);
+        List<Successor> list= new ArrayList<>();
+
+        //GENERADORES DE OPERACIONES
+        addMovableSuccessors(list);
+        addSwappableSuccessors(list);
+        //...
+        return list;
+    }
+
+    @Override
+    public double getHeuristicValue(Object state) {
+        AzamonState oldState = updateState((AzamonState) state);
+        //FUNCION HEURISTICA DE COSTE
+        double cost=0.0D;
+        for(int i=actualWeight.length-1;i>=0;--i) {
+            int day = azamonInfo.transporte.get(i).getDias();
+            cost+=actualWeight[i]*azamonInfo.transporte.get(i).getPrecio();
+            if (day==3 || day==4) cost+=actualWeight[i]*0.25D;
+            else if (day==5) cost+=actualWeight[i]*0.5D;
+        }
+        //HACER FUNCION HEURISTICA DE FELICIDAD
+        updateState(oldState);
+        return cost;
+    }
+    //GETTERS
+
+    int getAssignedOffer(int pack) {return assignedOffer[pack];}
+
+    //FUNCIONES PRIVADAS
 
     private void assignPackagesToOffers(int priority) {
         int packagePointer = 0;
@@ -53,45 +84,6 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         }
     }
 
-    @Override
-    public List getSuccessors(Object state) {
-        updateState((AzamonState) state);
-        List<Successor> list= new ArrayList<>();
-
-        //GENERADORES DE OPERACIONES
-        addMovableSuccessors(list);
-        addSwappableSuccessors(list);
-        //...
-
-        return list;
-    }
-
-
-
-    @Override
-    public double getHeuristicValue(Object state) {
-        double heuristic=0.0D;
-        AzamonState oldState = updateState((AzamonState) state);
-
-        //FUNCION HEURISTICA DE COSTE
-        //  <--
-        // Only value
-        double cost=0.0D;
-        for(int i=actualWeight.length-1;i>=0;--i) {
-            int day = azamonInfo.transporte.get(i).getDias();
-            cost+=actualWeight[i]*azamonInfo.transporte.get(i).getPrecio();
-            if (day==3 || day==4) cost+=actualWeight[i]*0.25D;
-            else if (day==5) cost+=actualWeight[i]*0.25D*2;
-        }
-        updateState(oldState);
-        return cost;
-    }
-    //GETTERS
-
-    int getAssignedOffer(int pack) {return assignedOffer[pack];}
-
-    //FUNCIONES PRIVADAS
-
     private boolean isPrioritySatisfable(Oferta oferta, Paquete paquete) {
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
         if (difference<=1 ) return true;
@@ -102,12 +94,10 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         return false;
     }
 
-    private AzamonState updateState(AzamonState azamonState) {//REHACER
+    private AzamonState updateState(AzamonState azamonState) {
         if (azamonState==null) return null;
-        return azamonState.updateBoard(this); //Devuelve el estado anterior
+        return azamonState.updateBoard(this);
     }
-
-
 
     private void addMovableSuccessors(List<Successor> list) {
         int packagesSize = azamonInfo.paquetes.size();
@@ -130,9 +120,10 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     }
 
     private void addSwappableSuccessors(List<Successor> list) {
-
+        //HACER FUNCION
     }
-    //FUNCIONES FRIEND
+
+    //FUNCIONES FRIEND -Uso exclusivo para la interface AzamonState-
     public void __move__(int pack, int offer) {
         double packageWeight = azamonInfo.paquetes.get(pack).getPeso();
         actualWeight[assignedOffer[pack]]-=packageWeight;
