@@ -70,14 +70,21 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     @Override
     public double getHeuristicValue(Object state) {
-        double heuristic=0;
+        double heuristic=0.0D;
         AzamonState oldState = updateState((AzamonState) state);
 
         //FUNCION HEURISTICA
         //  <--
-
+        // Only value
+        double cost=0.0D;
+        for(int i=actualWeight.length-1;i>=0;--i) {
+            int day = azamonInfo.getTransporte().get(i).getDias();
+            cost+=actualWeight[i]*azamonInfo.getTransporte().get(i).getPrecio();
+            if (day==3 || day==4) cost+=actualWeight[i]*0.25D;
+            else if (day==5) cost+=actualWeight[i]*0.25D*2;
+        }
         updateState(oldState);
-        return heuristic;
+        return cost;
     }
     //GETTERS
 
@@ -115,7 +122,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
                             isPrioritySatisfable(azamonInfo.getTransporte().get(offer), azamonInfo.getPaquetes().get(pack));
                     if (packageWeight+actualWeight[offer]<=offerMaxWeight && satisfablePriority) {
                         AzamonState newBoard = new AzamonMoveState(pack,offer);
-                        list.add(new Successor("",newBoard));
+                        list.add(new Successor("m"+ pack + "." + offer,newBoard));
                     }
                 }
             }
