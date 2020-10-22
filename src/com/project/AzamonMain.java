@@ -9,7 +9,8 @@ import src.com.project.state.AzamonBoard;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AzamonMain {
     public static void main(String[] args) throws IOException {
@@ -44,17 +45,28 @@ public class AzamonMain {
     private static void AzamonHillClimbingSearch(AzamonBoard aBoard) {
         System.out.println("Has elegido Hill Climbing");
         System.out.println("\nAzamon HillClimbing  -->");
-        double costeSinOpti =   aBoard.getHeuristicValue(null);
+        double heuristicoSinOpti = aBoard.getHeuristicValue(null);
+        double costeSinOpti =   aBoard.getCost(null);
+        double felicidadSinOpti = aBoard.getFelicidad(null);
         try {
             Problem problem =  new Problem(null,aBoard, null,aBoard);
             Search search =  new HillClimbingSearch();
+            Date d1,d2; Calendar c1,c2;
+            d1=new Date();
             SearchAgent agent = new SearchAgent(problem,search);
-
-            System.out.println("Acabao: ");
-            List list = agent.getActions();
-            for(Object str : list) System.out.println(str);
-            System.out.println("Coste Inicial: " + costeSinOpti);
-            System.out.println("Coste Final: "+aBoard.getHeuristicValue(null));
+            d2=new Date();
+            c1=Calendar.getInstance(); c2=Calendar.getInstance();
+            c1.setTime(d1); c2.setTime(d2);
+            //System.out.println("Acabao: ");
+            //List list = agent.getActions();
+            //for(Object str : list) System.out.println(str);
+            //System.out.println("H Inicial: " + heuristicoSinOpti);
+            //System.out.println("H Final: "+aBoard.getHeuristicValue(null));
+            //System.out.println("C Inicial: "+costeSinOpti);
+            System.out.println("Coste Final: "+aBoard.getCost(null));
+            //System.out.println("F Inicial: "+felicidadSinOpti);
+            //System.out.println("F Final: "+aBoard.getFelicidad(null));
+            System.out.println(c2.getTimeInMillis()-c1.getTimeInMillis()+" ms");
             //printActions(agent.getActions());
             //printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {

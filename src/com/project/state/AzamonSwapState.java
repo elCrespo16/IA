@@ -14,7 +14,7 @@ public class AzamonSwapState implements AzamonState {
         int offerFirst = azamonBoard.getAssignedOffer(first);
         int offerSecond = azamonBoard.getAssignedOffer(second);
         azamonBoard.__move__(first,offerSecond);
-        azamonBoard.__move__(second,offerSecond);
+        azamonBoard.__move__(second,offerFirst);
         return this;
     }
 }
