@@ -14,11 +14,21 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     private AzamonInfo azamonInfo;
     private int[] assignedOffer;
     private double[] actualWeight;
+    private int ganancia = 0;
 
     public AzamonBoard(AzamonInfo aInfo) {
         this.azamonInfo = aInfo;
         this.assignedOffer = new int[aInfo.paquetes.size()];
         this.actualWeight = new double[aInfo.transporte.size()];
+        int size = this.azamonInfo.paquetes.size();
+        int prio = 0;
+        for(int i = 0; i < size;++i){
+            prio = this.azamonInfo.paquetes.get(i).getPrioridad();
+            if(prio == 0)this.ganancia += 5;
+            else if(prio == 1)this.ganancia += 3;
+            else this.ganancia += 1.5;
+        }
+
     }
 
     public AzamonState generateInicialState(/*SE PODRIA ESPECIFICAR AQUI CON UN ENUM*/) {
@@ -41,6 +51,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         return list;
     }
 
+
     @Override
     public double getHeuristicValue(Object state) {
         AzamonState oldState = updateState((AzamonState) state);
@@ -53,14 +64,37 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
             else if (day==5) cost+=actualWeight[i]*0.5D;
         }
         //HACER FUNCION HEURISTICA DE FELICIDAD
-        updateState(oldState);
-        return cost;
+
+        //Calculo de la felicidad actual
+
+        //if(!priorizeMoney){
+
+            int size = azamonInfo.paquetes.size();
+            double felicidad = 0, priori = 0, dias = 0;
+            for(int i = 0;i < size;++i) {
+                priori = priorityToDays(azamonInfo.paquetes.get(i).getPrioridad());
+                dias = azamonInfo.transporte.get(assignedOffer[i]).getDias();
+                felicidad += priori - dias;
+            }
+            //System.out.println(felicidad);
+            updateState(oldState);
+            if(felicidad > 0) return cost/felicidad;
+            else return Double.MAX_VALUE;
+        //}
+        //updateState(oldState);
+        //return cost;
     }
     //GETTERS
 
     int getAssignedOffer(int pack) {return assignedOffer[pack];}
 
     //FUNCIONES PRIVADAS
+
+    private int priorityToDays(int priority) {
+        if(priority == 0) return 1;
+        if(priority == 1) return 3;
+        return 5;
+    }
 
     private void assignPackagesToOffers(int priority) {
         int packagePointer = 0;
