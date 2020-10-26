@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AzamonMain {
     public static void main(String[] args) throws IOException {
@@ -58,8 +59,8 @@ public class AzamonMain {
             c1=Calendar.getInstance(); c2=Calendar.getInstance();
             c1.setTime(d1); c2.setTime(d2);
             //System.out.println("Acabao: ");
-            //List list = agent.getActions();
-            //for(Object str : list) System.out.println(str);
+            List list = agent.getActions();
+            for(Object str : list) System.out.println(str);
             //System.out.println("H Inicial: " + heuristicoSinOpti);
             //System.out.println("H Final: "+aBoard.getHeuristicValue(null));
             //System.out.println("C Inicial: "+costeSinOpti);
