@@ -19,94 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="Restructura reader">
-      <change afterPath="$PROJECT_DIR$/src/com/project/state/HeuristicEnum.java" afterDir="false" />
+    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Agent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/AgentProgram.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/BasicEnvironmentView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Environment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/EnvironmentObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/MockAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/ObjectWithDynamicAttributes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Percept.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Tokenizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/Wall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/XYEnvironment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/XYLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/ModelBasedTVEVaccumAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/ModelBasedTVEVaccumAgentProgram.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TrivialVaccumDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TrivialVaccumEnvironment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TveDemo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TveDemo$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TveDemo$CleanerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/TveDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/basic/vaccum/VaccumEnvironmentModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/datastructures/FIFOQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/datastructures/LIFOQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/datastructures/PriorityQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/Assignment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/CSP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/Constraint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/Domains.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/MapCSP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/csp/MapColoringConstraint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/DefaultHeuristicFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/DefaultStepCostFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/GoalTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/GraphSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/HeuristicFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Measurable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Metrics.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/NodeExpander.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/NodeStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/PrioritySearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Problem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/QueueSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Search.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/SearchAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/SearchUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/StepCostFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/Successor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/SuccessorFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/framework/TreeSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/AStarSearch$NodeComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/AStarSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/DepthLimitedSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/GreedyBestFirstSearch$NodeComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/GreedyBestFirstSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/HillClimbingSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/IterativeDeepeningAStarSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/Scheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/informed/SimulatedAnnealingSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nodestore/FIFONodeStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nodestore/LIFONodeStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nodestore/PriorityNodeStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nqueens/NQueensBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nqueens/NQueensGoalTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nqueens/NQueensSuccessorFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/nqueens/QueensToBePlacedHeuristic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/uninformed/BreadthFirstSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/uninformed/DepthFirstSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/uninformed/DepthLimitedSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/search/uninformed/IterativeDeepeningSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/AbstractQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/LogicUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/Pair.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/Queue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/UniversalDictionary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IA/aima/util/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/AzamonInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/AzamonMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonSwapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/state/AzamonSwapState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +40,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -138,16 +54,25 @@
     <option name="height" value="1056" />
   </component>
   <component name="ProjectId" id="1ivFL64dOWxRltEe6DkaezabG1h" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Camilo(The best)/Cole" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -162,18 +87,8 @@
       <module />
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AzamonMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="AzamonMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="MAIN_CLASS_NAME" value="src.com.project.AzamonMain" />
       <module name="IA" />
       <method v="2">
@@ -213,11 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.AzamonMain" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -225,35 +135,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="AzamonBoard actualizado" />
+      <changelist id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="" />
       <created>1602780284030</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602780284030</updated>
       <workItem from="1602780272977" duration="51000" />
+      <workItem from="1603564202962" duration="1036000" />
     </task>
-    <task id="LOCAL-00001" summary="Estado Inicial &quot;acabado&quot;">
-      <created>1602781635592</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1602781635592</updated>
-    </task>
-    <task id="LOCAL-00002" summary="AzamonBoard actualizado">
-      <created>1602795870198</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1602795870198</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Update errors">
-      <created>1602947690594</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1602947690594</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +151,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:A:/Felipe(Fakerino)/uni/IA/out" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -279,53 +193,71 @@
       <collection />
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Estado Inicial &quot;acabado&quot;" />
-    <MESSAGE value="AzamonBoard actualizado" />
-    <MESSAGE value="Update errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update errors" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="94" key="#Project_Structure" timestamp="1603377454154">
+    <state x="440" y="94" key="#Project_Structure" timestamp="1603564290241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1603377454154" />
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602944727391">
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564290241" />
+    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603564979633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602944727391" />
-    <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603378226193">
+    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564979633" />
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1603564954200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603378226193" />
-    <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602795731930">
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564954200" />
+    <state x="585" y="188" key="CommitChangelistDialog2" timestamp="1603382999550">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602795731930" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom" timestamp="1603378201667">
+    <state x="585" y="188" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603382999550" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1603565256874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603378201667" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center" timestamp="1603378201667">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256874" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1603565256704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603378201667" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left" timestamp="1603378201667">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256704" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602781248846" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1603565256704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603378201667" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right" timestamp="1603378201667">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256704" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602781248846" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1603565256704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="235" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603378201667" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256704" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602781248845" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1603565256704">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256704" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602781248846" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1603565256705">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256705" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1603565256705">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256705" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1603565256705">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256705" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1603565256705">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256705" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1602780581015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1602780581015" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602947693225">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603565021047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602947693225" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565021047" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/IA$AzamonMain.ic" NAME="AzamonMain Coverage Results" MODIFIED="1602774361765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -19,9 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="Update swap">
+    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="añadido la generacion basica, pero esta comentada, falta añadir en el azamoninfo el parametro para elegir entre generaciones">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/AzamonMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +41,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -47,16 +49,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ivFL64dOWxRltEe6DkaezabG1h" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../subgrup-prop3-3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Camilo(The best)/Cole" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -71,18 +81,8 @@
       <module />
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AzamonMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="AzamonMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="MAIN_CLASS_NAME" value="src.com.project.AzamonMain" />
       <module name="IA" />
       <method v="2">
@@ -122,11 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.AzamonMain" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -134,12 +129,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="AzamonBoard actualizado" />
+      <changelist id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="" />
       <created>1602780284030</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602780284030</updated>
       <workItem from="1602780272977" duration="51000" />
+      <workItem from="1603564202962" duration="1036000" />
     </task>
     <task id="LOCAL-00001" summary="Estado Inicial &quot;acabado&quot;">
       <created>1602781635592</created>
@@ -162,14 +158,7 @@
       <option name="project" value="LOCAL" />
       <updated>1602947690594</updated>
     </task>
-    <task id="LOCAL-00004" summary="Update swap">
-      <created>1603380143214</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1603380143214</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +167,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:A:/Felipe(Fakerino)/uni/IA/out" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -199,54 +213,59 @@
     <MESSAGE value="Estado Inicial &quot;acabado&quot;" />
     <MESSAGE value="AzamonBoard actualizado" />
     <MESSAGE value="Update errors" />
-    <MESSAGE value="Update swap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update swap" />
+    <MESSAGE value="añadido la generacion basica, pero esta comentada, falta añadir en el azamoninfo el parametro para elegir entre generaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="añadido la generacion basica, pero esta comentada, falta añadir en el azamoninfo el parametro para elegir entre generaciones" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="94" key="#Project_Structure" timestamp="1603377454154">
+    <state x="440" y="94" key="#Project_Structure" timestamp="1603564290241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1603377454154" />
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602944727391">
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564290241" />
+    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603564979633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602944727391" />
-    <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603378226193">
+    <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564979633" />
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1603564954200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603378226193" />
-    <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602795731930">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603564954200" />
     <state x="565" y="88" width="790" height="952" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602795731930" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603491348970">
+    <state x="585" y="188" key="CommitChangelistDialog2" timestamp="1603713625578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603491348970" />
-    <state width="1877" height="403" key="GridCell.Tab.0.bottom" timestamp="1603390234416">
+    <state x="585" y="188" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603713625578" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1603565256874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="403" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603390234416" />
-    <state width="1877" height="403" key="GridCell.Tab.0.center" timestamp="1603390234416">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603565256874" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1603713625697">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="403" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603390234416" />
-    <state width="1877" height="403" key="GridCell.Tab.0.left" timestamp="1603390234415">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603713625697" />
+    <state width="1877" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603379445134" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1603713625697">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="403" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603390234415" />
-    <state width="1877" height="403" key="GridCell.Tab.0.right" timestamp="1603390234416">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603713625697" />
+    <state width="1877" height="235" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603379445134" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1603713625697">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="403" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603390234416" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603713625697" />
+    <state width="1877" height="235" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603379445133" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1603713625697">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1603713625697" />
+    <state width="1877" height="235" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603379445134" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1602780581015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1602780581015" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1603380148700">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602947693225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603380148700" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602947693225" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/IA$AzamonMain.ic" NAME="AzamonMain Coverage Results" MODIFIED="1602774361765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

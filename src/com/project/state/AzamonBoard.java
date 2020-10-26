@@ -24,9 +24,16 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     public AzamonState generateInicialState(/*SE PODRIA ESPECIFICAR AQUI CON UN ENUM*/) {
         //HACER GENERACION BASICA Y GENERACION INTELIGENTE
-        assignPackagesToOffers(0);
-        assignPackagesToOffers(1);
-        assignPackagesToOffers(2);
+        //if(generacionInteligente) {
+            assignPackagesToOffersGreedy(0);
+            assignPackagesToOffersGreedy(1);
+            assignPackagesToOffersGreedy(2);
+        //}
+        /*else {
+            assignPackagesToOffers(0);
+            assignPackagesToOffers(1);
+            assignPackagesToOffers(2);
+        }*/
         return null;
     }
 
@@ -92,7 +99,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         return 5;
     }
 
-    private void assignPackagesToOffers(int priority) {
+    private void assignPackagesToOffersGreedy(int priority) {
         int packagePointer = 0;
         for (Paquete paquete : azamonInfo.paquetes) {
             if (paquete.getPrioridad()==priority) {
@@ -113,15 +120,40 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
             } ++packagePointer;
         }
     }
+    private void assignPackagesToOffers(int priority) {
+        int packagePointer = 0;
+        for (Paquete paquete : azamonInfo.paquetes) {
+            if (paquete.getPrioridad()==priority) {
+                int offerPointer = 0;
+                for (Oferta oferta : azamonInfo.transporte) {
 
+                    double maxWeight = oferta.getPesomax();
+                    double sumWeight = actualWeight[offerPointer] + paquete.getPeso();
+
+                    boolean satisfablePriority = isPriorityEqual(oferta, paquete);
+                    if (sumWeight <= maxWeight && satisfablePriority) {
+                        actualWeight[offerPointer] = sumWeight;
+                        assignedOffer[packagePointer] = offerPointer;
+                        break;
+                    } ++offerPointer;
+
+                }
+            } ++packagePointer;
+        }
+    }
+
+    private boolean isPriorityEqual (Oferta oferta, Paquete paquete) {
+        int diasOferta = oferta.getDias();
+        int diasPaquete = priorityToDays(paquete.getPrioridad());
+        return (diasOferta == diasPaquete) || (diasPaquete == 3 && diasOferta == 2) || (diasPaquete == 5 && diasOferta == 4);
+    }
     private boolean isPrioritySatisfable(Oferta oferta, Paquete paquete) {
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
-        if (difference<=1 ) return true;
+        return difference <= 1;
         /*
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
         if (difference==0 || difference==1) return true;
         */
-        return false;
     }
 
     private AzamonState updateState(AzamonState azamonState) {
