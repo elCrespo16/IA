@@ -11,10 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
-    private AzamonInfo azamonInfo;
-    private int[] assignedOffer;
-    private double[] actualWeight;
-    private int ganancia = 0;
+    protected AzamonInfo azamonInfo;
+    protected int[] assignedOffer;
+    protected double[] actualWeight;
 
     public AzamonBoard(AzamonInfo aInfo) {
         this.azamonInfo = aInfo;
@@ -22,18 +21,13 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         this.actualWeight = new double[aInfo.transporte.size()];
     }
 
-    public AzamonState generateInicialState(/*SE PODRIA ESPECIFICAR AQUI CON UN ENUM*/) {
+    public AzamonState generateInicialState(int option) {
         //HACER GENERACION BASICA Y GENERACION INTELIGENTE
-        //if(generacionInteligente) {
+        if (option==1) {
             assignPackagesToOffersGreedy(0);
             assignPackagesToOffersGreedy(1);
             assignPackagesToOffersGreedy(2);
-        //}
-        /*else {
-            assignPackagesToOffers(0);
-            assignPackagesToOffers(1);
-            assignPackagesToOffers(2);
-        }*/
+        } else if (option==0) assignPackagesToOffers();
         return null;
     }
 
@@ -43,8 +37,9 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         List<Successor> list= new ArrayList<>();
 
         //GENERADORES DE OPERACIONES
-        addMovableSuccessors(list);
-        addSwappableSuccessors(list);
+        int flags=azamonInfo.operadoresFlag;
+        if ((flags & 1)==1) addMovableSuccessors(list);
+        if (((flags >> 1) & 1) == 1) addSwappableSuccessors(list);
         //...
         return list;
     }
@@ -93,7 +88,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     }
     //FUNCIONES PRIVADAS
 
-    private int priorityToDays(int priority) {
+    protected int priorityToDays(int priority) {
         if(priority == 0) return 1;
         if(priority == 1) return 3;
         return 5;
@@ -120,25 +115,23 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
             } ++packagePointer;
         }
     }
-    private void assignPackagesToOffers(int priority) {
+    protected void assignPackagesToOffers() {
         int packagePointer = 0;
         for (Paquete paquete : azamonInfo.paquetes) {
-            if (paquete.getPrioridad()==priority) {
-                int offerPointer = 0;
-                for (Oferta oferta : azamonInfo.transporte) {
+            int offerPointer = 0;
+            for (Oferta oferta : azamonInfo.transporte) {
+                double maxWeight = oferta.getPesomax();
+                double sumWeight = actualWeight[offerPointer] + paquete.getPeso();
 
-                    double maxWeight = oferta.getPesomax();
-                    double sumWeight = actualWeight[offerPointer] + paquete.getPeso();
-
-                    boolean satisfablePriority = isPriorityEqual(oferta, paquete);
-                    if (sumWeight <= maxWeight && satisfablePriority) {
-                        actualWeight[offerPointer] = sumWeight;
-                        assignedOffer[packagePointer] = offerPointer;
-                        break;
-                    } ++offerPointer;
-
+                boolean satisfablePriority = isPriorityEqual(oferta, paquete);
+                if (sumWeight <= maxWeight && satisfablePriority) {
+                    actualWeight[offerPointer] = sumWeight;
+                    assignedOffer[packagePointer] = offerPointer;
+                    break;
                 }
-            } ++packagePointer;
+                ++offerPointer;
+            }
+            ++packagePointer;
         }
     }
 
@@ -147,7 +140,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         int diasPaquete = priorityToDays(paquete.getPrioridad());
         return (diasOferta == diasPaquete) || (diasPaquete == 3 && diasOferta == 2) || (diasPaquete == 5 && diasOferta == 4);
     }
-    private boolean isPrioritySatisfable(Oferta oferta, Paquete paquete) {
+    protected boolean isPrioritySatisfable(Oferta oferta, Paquete paquete) {
         int difference = oferta.getDias() - paquete.getPrioridad()*2;
         return difference <= 1;
         /*
@@ -156,12 +149,12 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         */
     }
 
-    private AzamonState updateState(AzamonState azamonState) {
+    protected AzamonState updateState(AzamonState azamonState) {
         if (azamonState==null) return null;
         return azamonState.updateBoard(this);
     }
 
-    private void addMovableSuccessors(List<Successor> list) {
+    protected void addMovableSuccessors(List<Successor> list) {
         int packagesSize = azamonInfo.paquetes.size();
         int offersSize = azamonInfo.transporte.size();
 
@@ -181,7 +174,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         }
     }
 
-    private void addSwappableSuccessors(List<Successor> list) {
+    protected void addSwappableSuccessors(List<Successor> list) {
         //HACER FUNCION
         int packagesSize = azamonInfo.paquetes.size();
         for(int i=0;i<packagesSize-1;++i) {
@@ -213,5 +206,21 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         actualWeight[assignedOffer[pack]]-=packageWeight;
         actualWeight[offer]+=packageWeight;
         assignedOffer[pack]=offer;
+    }
+
+    public void __execute__(String str) {
+        if (str.contains("m")) {
+            int index = str.indexOf(".");
+            int pack = Integer.getInteger(str.substring(1,index-1));
+            int offer = Integer.getInteger(str.substring(index+1,str.length()-1));
+            __move__(pack,offer);
+        } else if (str.contains("s")) {
+            int index = str.indexOf(".");
+            int pack1 = Integer.getInteger(str.substring(1,index-1));
+            int pack2 = Integer.getInteger(str.substring(index+1,str.length()-1));
+            int offer1=assignedOffer[pack1];
+            __move__(pack1,assignedOffer[pack2]);
+            __move__(pack2,offer1);
+        }
     }
 }

@@ -1,0 +1,170 @@
+package src.com.project;
+
+import IA.Azamon.Paquetes;
+import IA.Azamon.Transporte;
+import aima.search.framework.Problem;
+import aima.search.framework.Search;
+import aima.search.framework.SearchAgent;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.SimulatedAnnealingSearch;
+import src.com.project.state.AzamonBoard;
+import src.com.project.state.AzamonBoardAnneling;
+import src.com.project.state.AzamonState;
+import src.com.project.state.HeuristicEnum;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Experimentos {
+
+    private static DecimalFormat df = setupDF();
+
+    private static DecimalFormat setupDF() {
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        return df;
+    }
+    private static ArrayList<Integer> generarSeeds(){
+        System.out.println("Muestras:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int muestras = 0;
+        try { muestras = Integer.parseInt(reader.readLine()); }
+        catch (IOException e) { e.printStackTrace();}
+
+        ArrayList<Integer> seeds = new ArrayList<Integer>(muestras);
+        Random random = new Random();
+        for(int i=0;i<muestras;++i) seeds.add(random.nextInt(1000000));
+        return seeds;
+    }
+
+    public static void primero() throws Exception {
+        ArrayList<Integer> seeds = generarSeeds();
+        System.out.println("seed"+(char)9+"Operador Move"+(char)9+"Operador Swap"+(char)9+"Operador Both");
+        for(int seed:seeds) {
+            Paquetes paquetes = new Paquetes(100,seed);
+            Transporte transporte = new Transporte(paquetes,1.2,seed);
+            int operadores[] = {0x01, 0x02, 0x03};
+            System.out.print(seed+" ");
+            for(int operador:operadores) {
+                AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, operador);
+                AzamonBoard aBoard = new AzamonBoard(aInfo);
+                aBoard.generateInicialState(0);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new HillClimbingSearch();
+                SearchAgent agent = new SearchAgent(problem,search);
+                System.out.print((char)9+df.format(aBoard.getCost(null))+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void segundo() throws Exception {
+        ArrayList<Integer> seeds = generarSeeds();
+        System.out.println("seed"+(char)9+"Operador Move"+(char)9+"Operador Swap");
+        for(int seed:seeds) {
+            Paquetes paquetes = new Paquetes(100,seed);
+            Transporte transporte = new Transporte(paquetes,1.2,seed);
+            int generaciones[] = {0,1};
+            System.out.print(seed+" ");
+            for(int generacion:generaciones) {
+                AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 0x03);
+                AzamonBoard aBoard = new AzamonBoard(aInfo);
+                aBoard.generateInicialState(generacion);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new HillClimbingSearch();
+                SearchAgent agent = new SearchAgent(problem,search);
+                System.out.print((char)9+df.format(aBoard.getCost(null))+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static void terceroPasos(Search search, AzamonInfo aInfo) {
+        List list = search.getPathStates();
+        AzamonBoardAnneling aBoardTest = new AzamonBoardAnneling(aInfo);
+        aBoardTest.generateInicialState(1);
+        System.out.println("Pasos" + (char) 9 + "Coste");
+        System.out.println(0+" " + (char) 9 + df.format(aBoardTest.getCost(null)));
+        int paso=1;
+        for(Object action: list) {
+            if (action!=null) ((AzamonState)action).updateBoard(aBoardTest);
+            System.out.println(paso+" "+ (char) 9 + df.format(aBoardTest.getCost(null)));
+            ++paso;
+        }
+        System.out.println();
+    }
+
+    public static void tercero() throws Exception {
+        System.out.println("Grafica [step|stiter|k|lamb]:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String option=reader.readLine();
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        int seed = (new Random()).nextInt(1_000_000);
+        int stepList[] = {1000,10_000,100_000,1_000_000,10_000_000};
+        int stiterList[] = {10,20,50,100,200};
+        int kList[] = {1,5,25,125,600};
+        double lambList[] = {0.1,0.01,0.001,0.0001,0.000_01};
+        Paquetes paquetes = new Paquetes(100,seed);
+        Transporte transporte = new Transporte(paquetes,1.2,seed);
+        AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 0x03);
+        //steps
+        if (option.equals("step")) {
+            for (int step:stepList) {
+                System.out.println("Iteraciones: "+step+", Stiter: "+step/stiterList[1]+", K: "+kList[1]+", Lamb: "+lambList[1]);
+                AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
+                aBoard.generateInicialState(1);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new SimulatedAnnealingSearch(step, stiterList[1], kList[1], lambList[1]);
+                SearchAgent agent = new SearchAgent(problem, search);
+
+                terceroPasos(search, aInfo);
+            }
+        }
+        //stiter
+        else if (option.equals("stiter")) {
+            for (int stiter:stiterList) {
+                System.out.println("Iteraciones: "+stepList[1]+", Stiter: "+stepList[1]/stiter+", K: "+kList[1]+", Lamb: "+lambList[1]);
+                AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
+                aBoard.generateInicialState(1);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1]/stiter, kList[1], lambList[1]);
+                SearchAgent agent = new SearchAgent(problem, search);
+
+                terceroPasos(search, aInfo);
+            }
+        }
+        //k
+        else if (option.equals("k")) {
+            for (int k:kList) {
+                System.out.println("Iteraciones: "+stepList[1]+", Stiter: "+stepList[1]/stiterList[1]+", K: "+k+", Lamb: "+lambList[1]);
+                AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
+                aBoard.generateInicialState(1);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1]/stiterList[1], k, lambList[1]);
+                SearchAgent agent = new SearchAgent(problem, search);
+
+                terceroPasos(search, aInfo);
+            }
+        }
+        //lamb
+        else if (option.equals("lamb")) {
+            for (double lamb:lambList) {
+                System.out.println("Iteraciones: "+stepList[1]+", Stiter: "+stepList[1]/stiterList[1]+", K: "+kList[1]+", Lamb: "+lamb);
+                AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
+                aBoard.generateInicialState(1);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1]/stiterList[1], kList[1], lamb);
+                SearchAgent agent = new SearchAgent(problem, search);
+
+                terceroPasos(search, aInfo);
+            }
+        }
+    }
+}

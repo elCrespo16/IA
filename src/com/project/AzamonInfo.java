@@ -14,8 +14,9 @@ public class AzamonInfo {
     public final Transporte transporte;
     public final HeuristicEnum heuristico;
     public final double ganancia;
+    public final int operadoresFlag;
 
-    public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico) {
+    public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico,int operadoresFlag) {
         this.paquetes = paquetes;
         this.transporte = transporte;
         this.heuristico = heuristico;
@@ -29,6 +30,7 @@ public class AzamonInfo {
             else ganancia += 1.5;
         }
         this.ganancia=ganancia;
+        this.operadoresFlag=operadoresFlag;
     }
 
     public static AzamonInfo reader() throws IOException {
@@ -55,7 +57,7 @@ public class AzamonInfo {
         transporte = new Transporte(paquetes,proportion,seed);
 
 
-        return new AzamonInfo(paquetes,transporte, heuristico);
+        return new AzamonInfo(paquetes,transporte, heuristico, 0x011);
     }
 
 }
