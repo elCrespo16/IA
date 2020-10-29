@@ -92,7 +92,7 @@ public class AzamonInfo {
         transporte = new Transporte(paquetes,proportion,seed);
 
 
-        return new AzamonInfo(paquetes,transporte, heuristico,ponderacion, 0x011);
+        return new AzamonInfo(paquetes,transporte, heuristico,ponderacion, 0x03);
     }
 
 }

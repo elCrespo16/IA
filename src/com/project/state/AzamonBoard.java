@@ -21,13 +21,13 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         this.actualWeight = new double[aInfo.transporte.size()];
     }
 
-    public AzamonState generateInicialState(int option) {
+    public AzamonState generateInicialState(GenerateEnum option) {
         //HACER GENERACION BASICA Y GENERACION INTELIGENTE
-        if (option==1) {
+        if (option==GenerateEnum.PRIORITY_ORDERED) {
             assignPackagesToOffersGreedy(0);
             assignPackagesToOffersGreedy(1);
             assignPackagesToOffersGreedy(2);
-        } else if (option==0) assignPackagesToOffers();
+        } else if (option==GenerateEnum.BASIC) assignPackagesToOffers();
         return null;
     }
 

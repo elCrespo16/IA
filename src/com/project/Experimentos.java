@@ -7,10 +7,7 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
-import src.com.project.state.AzamonBoard;
-import src.com.project.state.AzamonBoardAnneling;
-import src.com.project.state.AzamonState;
-import src.com.project.state.HeuristicEnum;
+import src.com.project.state.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,7 +49,7 @@ public class Experimentos {
             for(int operador:operadores) {
                 AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, operador);
                 AzamonBoard aBoard = new AzamonBoard(aInfo);
-                aBoard.generateInicialState(0);
+                aBoard.generateInicialState(GenerateEnum.BASIC);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new HillClimbingSearch();
                 SearchAgent agent = new SearchAgent(problem,search);
@@ -68,9 +65,9 @@ public class Experimentos {
         for(int seed:seeds) {
             Paquetes paquetes = new Paquetes(100,seed);
             Transporte transporte = new Transporte(paquetes,1.2,seed);
-            int generaciones[] = {0,1};
+            GenerateEnum generaciones[] = {GenerateEnum.BASIC,GenerateEnum.PRIORITY_ORDERED};
             System.out.print(seed+" ");
-            for(int generacion:generaciones) {
+            for(GenerateEnum generacion:generaciones) {
                 AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 0x03);
                 AzamonBoard aBoard = new AzamonBoard(aInfo);
                 aBoard.generateInicialState(generacion);
@@ -86,7 +83,7 @@ public class Experimentos {
     private static void terceroPasos(Search search, AzamonInfo aInfo) {
         List list = search.getPathStates();
         AzamonBoardAnneling aBoardTest = new AzamonBoardAnneling(aInfo);
-        aBoardTest.generateInicialState(1);
+        aBoardTest.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
         System.out.println("Pasos" + (char) 9 + "Coste");
         System.out.println(0+" " + (char) 9 + df.format(aBoardTest.getCost(null)));
         int paso=1;
@@ -99,7 +96,7 @@ public class Experimentos {
     }
 
     public static void tercero() throws Exception {
-        System.out.println("Grafica [step|stiter|k|lamb]:");
+        System.out.println("Grafica [step|stiter|k|lamb|lamb2]:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String option = reader.readLine();
         DecimalFormat df = new DecimalFormat("#.###");
@@ -117,7 +114,7 @@ public class Experimentos {
             for (int step : stepList) {
                 System.out.println("Iteraciones: " + step + ", Stiter: " + step / stiterList[1] + ", K: " + kList[1] + ", Lamb: " + lambList[1]);
                 AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new SimulatedAnnealingSearch(step, stiterList[1], kList[1], lambList[1]);
                 SearchAgent agent = new SearchAgent(problem, search);
@@ -130,7 +127,7 @@ public class Experimentos {
             for (int stiter : stiterList) {
                 System.out.println("Iteraciones: " + stepList[1] + ", Stiter: " + stepList[1] / stiter + ", K: " + kList[1] + ", Lamb: " + lambList[1]);
                 AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1] / stiter, kList[1], lambList[1]);
                 SearchAgent agent = new SearchAgent(problem, search);
@@ -143,7 +140,7 @@ public class Experimentos {
             for (int k : kList) {
                 System.out.println("Iteraciones: " + stepList[1] + ", Stiter: " + stepList[1] / stiterList[1] + ", K: " + k + ", Lamb: " + lambList[1]);
                 AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1] / stiterList[1], k, lambList[1]);
                 SearchAgent agent = new SearchAgent(problem, search);
@@ -156,9 +153,21 @@ public class Experimentos {
             for (double lamb : lambList) {
                 System.out.println("Iteraciones: " + stepList[1] + ", Stiter: " + stepList[1] / stiterList[1] + ", K: " + kList[1] + ", Lamb: " + lamb);
                 AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new SimulatedAnnealingSearch(stepList[1], stepList[1] / stiterList[1], kList[1], lamb);
+                SearchAgent agent = new SearchAgent(problem, search);
+
+                terceroPasos(search, aInfo);
+            }
+        }
+        else if (option.equals("lamb2")) {
+            for (double lamb : lambList) {
+                System.out.println("Iteraciones: " + stepList[2] + ", Stiter: " + stepList[2] / stiterList[1] + ", K: " + kList[1] + ", Lamb: " + lamb);
+                AzamonBoardAnneling aBoard = new AzamonBoardAnneling(aInfo);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
+                Problem problem = new Problem(null, aBoard, null, aBoard);
+                Search search = new SimulatedAnnealingSearch(stepList[2], stepList[2] / stiterList[1], kList[1], lamb);
                 SearchAgent agent = new SearchAgent(problem, search);
 
                 terceroPasos(search, aInfo);
@@ -178,7 +187,7 @@ public class Experimentos {
                 Transporte transporte = new Transporte(paquetes, 1.2, seed);
                 AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 0x03);
                 AzamonBoard aBoard = new AzamonBoard(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new HillClimbingSearch();
 
@@ -198,7 +207,7 @@ public class Experimentos {
                 Transporte transporte = new Transporte(paquetes, proporcion, seed);
                 AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 0x03);
                 AzamonBoard aBoard = new AzamonBoard(aInfo);
-                aBoard.generateInicialState(1);
+                aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
                 Problem problem = new Problem(null, aBoard, null, aBoard);
                 Search search = new HillClimbingSearch();
 
@@ -224,7 +233,7 @@ public class Experimentos {
         for (double ponderacion = 0.05D; ponderacion < 5.05D; ponderacion += 0.05D) {
             AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.FELICIDAD, ponderacion, 0x03);
             AzamonBoard aBoard = new AzamonBoard(aInfo);
-            aBoard.generateInicialState(1);
+            aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
             Problem problem = new Problem(null, aBoard, null, aBoard);
             Search search = new HillClimbingSearch();
 
@@ -252,9 +261,9 @@ public class Experimentos {
         for (double ponderacion = 0.05D; ponderacion < 5.05D; ponderacion += 0.05D) {
             AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.FELICIDAD, ponderacion, 0x03);
             AzamonBoard aBoard = new AzamonBoard(aInfo);
-            aBoard.generateInicialState(1);
+            aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
             Problem problem = new Problem(null, aBoard, null, aBoard);
-            Search search = new SimulatedAnnealingSearch(1,1 ,1 ,1.0D ); //sin acabar
+            Search search = new SimulatedAnnealingSearch(200_000,500 ,300 ,0.0003D ); //sin acabar
 
             Date d1, d2;
             Calendar c1, c2;
@@ -281,7 +290,7 @@ public class Experimentos {
         for(double precio=0.01D;precio<=1.501D;precio+=0.01D) {
             AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE, 1.0D, 0x03,precio);
             AzamonBoard aBoard = new AzamonBoard(aInfo);
-            aBoard.generateInicialState(1);
+            aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
             Problem problem = new Problem(null, aBoard, null, aBoard);
             Search search = new HillClimbingSearch();
 
@@ -299,5 +308,9 @@ public class Experimentos {
             System.out.println(df.format(precio) + " " + (char) 9 + (c2.getTimeInMillis() - c1.getTimeInMillis())
                     + " " + (char) 9 + df.format(transport) + " " + (char) 9 + df.format(almacen) + " " + (char) 9 + df.format(transport + almacen));
         }
+    }
+
+    public static void noveno() {
+
     }
 }
