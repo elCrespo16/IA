@@ -20,7 +20,7 @@ public class AzamonMain {
     public static void main(String[] args) throws Exception {
 
         //Enter data using BufferReader
-        Experimentos.tercero();
+        Experimentos.octavo();
         //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         //System.out.println("Selecciona algoritmo [HillC|SimAnn]:");
         //String algorithm = reader.readLine();

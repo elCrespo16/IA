@@ -13,28 +13,57 @@ public class AzamonInfo {
     public final Paquetes paquetes;
     public final Transporte transporte;
     public final HeuristicEnum heuristico;
-    public final double ganancia;
+    public final double ponderacion;
     public final int operadoresFlag;
+    public final double almacen;
+
+    public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico,double ponderacion,int operadoresFlag, double almacen) {
+        this.paquetes = paquetes;
+        this.transporte = transporte;
+        this.heuristico = heuristico;
+        this.operadoresFlag=operadoresFlag;
+        this.ponderacion=ponderacion;
+        this.almacen=almacen;
+    }
+
+    public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico,double ponderacion,int operadoresFlag) {
+        this.paquetes = paquetes;
+        this.transporte = transporte;
+        this.heuristico = heuristico;
+        this.operadoresFlag=operadoresFlag;
+        this.ponderacion=ponderacion;
+        this.almacen=0.25D;
+    }
 
     public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico,int operadoresFlag) {
         this.paquetes = paquetes;
         this.transporte = transporte;
         this.heuristico = heuristico;
-        double ganancia=0;
-        int size = paquetes.size();
-        int prio = 0;
-        for(int i = 0; i < size;++i){
-            prio = paquetes.get(i).getPrioridad();
-            if(prio == 0)ganancia += 5;
-            else if(prio == 1)ganancia += 3;
-            else ganancia += 1.5;
-        }
-        this.ganancia=ganancia;
         this.operadoresFlag=operadoresFlag;
+        this.ponderacion=1.0D;
+        this.almacen=0.25D;
+    }
+
+    public AzamonInfo(Paquetes paquetes, Transporte transporte, HeuristicEnum heuristico) {
+        this.paquetes = paquetes;
+        this.transporte = transporte;
+        this.heuristico = heuristico;
+        this.operadoresFlag=0x03;
+        this.ponderacion=1.0D;
+        this.almacen=0.25D;
+    }
+
+    public AzamonInfo(Paquetes paquetes, Transporte transporte) {
+        this.paquetes = paquetes;
+        this.transporte = transporte;
+        this.heuristico = HeuristicEnum.COSTE;
+        this.operadoresFlag=0x03;
+        this.ponderacion=1.0D;
+        this.almacen=0.25D;
     }
 
     public static AzamonInfo reader() throws IOException {
-        int npaquetes; int seed; double proportion;
+        int npaquetes; int seed; double proportion, ponderacion, almacen;
         BufferedReader reader; String seedStr,heuristicoStr; Paquetes paquetes; Transporte transporte;
         HeuristicEnum heuristico = HeuristicEnum.COSTE;
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -49,7 +78,13 @@ public class AzamonInfo {
             else if (heuristicoStr.equals("felicidad")) {heuristico = HeuristicEnum.FELICIDAD;consulta=false;}
             else consulta=true;
         } while (consulta);
-
+        ponderacion=1.0D;
+        if (heuristico==HeuristicEnum.FELICIDAD) {
+            System.out.println("Ponderación:");
+            ponderacion = Double.parseDouble(reader.readLine());
+        }
+        almacen=0.25D;
+        System.out.println("Costo almacen:"); almacen = Double.parseDouble(reader.readLine());
         if(seedStr.equals("random")) seed=(new Random()).nextInt(101);
         else seed = Integer.parseInt(seedStr);
 
@@ -57,7 +92,7 @@ public class AzamonInfo {
         transporte = new Transporte(paquetes,proportion,seed);
 
 
-        return new AzamonInfo(paquetes,transporte, heuristico, 0x011);
+        return new AzamonInfo(paquetes,transporte, heuristico,ponderacion, 0x011);
     }
 
 }

@@ -47,14 +47,12 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
 
     @Override
     public double getHeuristicValue(Object state) {
-        AzamonState oldState = updateState((AzamonState) state);
         //FUNCION HEURISTICA DE COSTE
-        double cost = getCost(null);
-        if (azamonInfo.heuristico==HeuristicEnum.COSTE) {updateState(oldState); return cost;}
-        double felicidad = getFelicidad(null);
+        double cost = getCost((AzamonState) state);
+        if (azamonInfo.heuristico==HeuristicEnum.COSTE) return cost;
+        double felicidad = getFelicidad((AzamonState) state);
 
-        updateState(oldState);
-        if(felicidad > 0) return cost/felicidad;
+        if(felicidad > 0) return cost/Math.pow(felicidad,azamonInfo.ponderacion);
         else return Double.MAX_VALUE;
     }
     //GETTERS
@@ -67,8 +65,31 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
         for(int i=actualWeight.length-1;i>=0;--i) {
             int day = azamonInfo.transporte.get(i).getDias();
             cost+=actualWeight[i]*azamonInfo.transporte.get(i).getPrecio();
-            if (day==3 || day==4) cost+=actualWeight[i]*0.25D;
-            else if (day==5) cost+=actualWeight[i]*0.5D;
+            if (day==3 || day==4) cost+=actualWeight[i]*azamonInfo.almacen;
+            else if (day==5) cost+=actualWeight[i]*azamonInfo.almacen*2;
+        }
+        updateState(oldState);
+        return cost;
+    }
+
+    public double getTransportCost(Object state) {
+        AzamonState oldState = updateState((AzamonState) state);
+        double cost=0.0D;
+        for(int i=actualWeight.length-1;i>=0;--i) {
+            int day = azamonInfo.transporte.get(i).getDias();
+            cost+=actualWeight[i]*azamonInfo.transporte.get(i).getPrecio();
+        }
+        updateState(oldState);
+        return cost;
+    }
+
+    public double getAlmacenCost(Object state) {
+        AzamonState oldState = updateState((AzamonState) state);
+        double cost=0.0D;
+        for(int i=actualWeight.length-1;i>=0;--i) {
+            int day = azamonInfo.transporte.get(i).getDias();
+            if (day==3 || day==4) cost+=actualWeight[i]*azamonInfo.almacen;
+            else if (day==5) cost+=actualWeight[i]*azamonInfo.almacen*2;
         }
         updateState(oldState);
         return cost;
