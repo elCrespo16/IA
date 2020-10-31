@@ -1,6 +1,8 @@
-package src.com.project.state;
+package src.com.project.classes.states;
 
-public class AzamonMoveState implements AzamonState{
+import src.com.project.classes.boards.AzamonBoard;
+
+public class AzamonMoveState implements AzamonState {
     public final int pack;
     public final int offer;
 

@@ -1,4 +1,4 @@
-package src.com.project;
+package src.com.project.classes;
 
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
@@ -7,7 +7,11 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
-import src.com.project.state.*;
+import src.com.project.classes.boards.AzamonBoard;
+import src.com.project.classes.boards.AzamonBoardAnneling;
+import src.com.project.classes.enums.GenerateEnum;
+import src.com.project.classes.enums.HeuristicEnum;
+import src.com.project.classes.states.AzamonState;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +30,7 @@ public class Experimentos {
         return df;
     }
     private static ArrayList<Integer> generarSeeds(){
-        System.out.println("Muestras:");
+        System.out.print("Muestras: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int muestras = 0;
         try { muestras = Integer.parseInt(reader.readLine()); }
@@ -96,7 +100,7 @@ public class Experimentos {
     }
 
     public static void tercero() throws Exception {
-        System.out.println("Grafica [step|stiter|k|lamb|lamb2]:");
+        System.out.print("Grafica [step|stiter|k|lamb|lamb2]: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String option = reader.readLine();
         DecimalFormat df = new DecimalFormat("#.###");
@@ -176,7 +180,7 @@ public class Experimentos {
     }
 
     public static void cuarto_quinto() throws Exception {
-        System.out.println("Incrementar [paquetes|proporcion]:");
+        System.out.print("Incrementar [paquetes|proporcion]: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String option=reader.readLine();
         if (option.equals("paquetes")) {
@@ -200,7 +204,7 @@ public class Experimentos {
                 System.out.println(npaquetes+" " + (char) 9 + (c2.getTimeInMillis()-c1.getTimeInMillis()));
             }
         } else if (option.equals("proporcion")) {
-            int seed = (new Random()).nextInt(1000000);
+            int seed = (new Random()).nextInt(1_000_000);
             System.out.println("Proporcion" + (char) 9 + "Tiempo (ms)"+ (char) 9 + "Transporte"+ (char) 9 + "Almacen"+ (char) 9 + "Total");
             Paquetes paquetes = new Paquetes(100, seed);
             for(double proporcion=1.2;proporcion<=21.2;proporcion+=0.2D) {
@@ -226,7 +230,7 @@ public class Experimentos {
     }
 
     public static void sexto() throws Exception {
-        int seed = (new Random()).nextInt(1000000);
+        int seed = (new Random()).nextInt(1_000_000);
         Paquetes paquetes = new Paquetes(100, seed);
         Transporte transporte = new Transporte(paquetes, 1.2, seed);
         System.out.println("Ponderacion" + (char) 9 + "Tiempo (ms)" + (char) 9 + "Transporte" + (char) 9 + "Almacen" + (char) 9 + "Total");
@@ -254,7 +258,7 @@ public class Experimentos {
     }
 
     public static void septimo() throws Exception {
-        int seed = (new Random()).nextInt(1000000);
+        int seed = (new Random()).nextInt(1_000_000);
         Paquetes paquetes = new Paquetes(100, seed);
         Transporte transporte = new Transporte(paquetes, 1.2, seed);
         System.out.println("Ponderacion" + (char) 9 + "Tiempo (ms)" + (char) 9 + "Transporte" + (char) 9 + "Almacen" + (char) 9 + "Total");
@@ -283,7 +287,7 @@ public class Experimentos {
     }
 
     public static void octavo() throws Exception {
-        int seed = (new Random()).nextInt(1000000);
+        int seed = (new Random()).nextInt(1_000_000);
         Paquetes paquetes = new Paquetes(100, seed);
         Transporte transporte = new Transporte(paquetes, 1.2, seed);
         System.out.println("Precio/kg" + (char) 9 + "Tiempo (ms)" + (char) 9 + "Transporte" + (char) 9 + "Almacen" + (char) 9 + "Total");
@@ -310,7 +314,23 @@ public class Experimentos {
         }
     }
 
-    public static void noveno() {
+    public static void noveno() throws Exception {
+        int seed = 1234;
+        Paquetes paquetes = new Paquetes(100, seed);
+        Transporte transporte = new Transporte(paquetes, 1.2, seed);
+        AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE);
+        AzamonBoard aBoard = new AzamonBoard(aInfo);
+        aBoard.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
+        Problem problem = new Problem(null, aBoard, null, aBoard);
+        Search search = new HillClimbingSearch();
 
+        Date d1, d2;
+        Calendar c1, c2;
+        d1 = new Date();
+        SearchAgent agent = new SearchAgent(problem, search);
+        d2 = new Date();
+        c1 = Calendar.getInstance(); c2 = Calendar.getInstance();
+        c1.setTime(d1); c2.setTime(d2);
+        System.out.println(df.format(aBoard.getCost(null))+" "+(char)9+(c2.getTimeInMillis() - c1.getTimeInMillis())+ " ms");
     }
 }

@@ -19,15 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="rehecho hasta 8">
-      <change afterPath="$PROJECT_DIR$/src/com/project/AzamonReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/project/state/GenerateEnum.java" afterDir="false" />
+    <list default="true" id="94899673-d89c-4202-83b9-6074fbc1cd7a" name="Default Changelist" comment="todo menos nueve">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/AzamonInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/AzamonInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/project/AzamonMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/AzamonMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/Experimentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/Experimentos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/AzamonReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/AzamonReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/Experimentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/Experimentos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/boards/AzamonBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonBoardAnneling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/boards/AzamonBoardAnneling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonMoveState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/states/AzamonMoveState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/states/AzamonState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/AzamonSwapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/states/AzamonSwapState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/GenerateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/enums/GenerateEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/project/state/HeuristicEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/project/classes/enums/HeuristicEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603977437662</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="todo menos nueve">
+      <created>1604010814022</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604010814022</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +234,8 @@
     <MESSAGE value="Update swap" />
     <MESSAGE value="rehecho hasta 3" />
     <MESSAGE value="rehecho hasta 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="rehecho hasta 8" />
+    <MESSAGE value="todo menos nueve" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo menos nueve" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="94" key="#Project_Structure" timestamp="1603903892672">
@@ -253,30 +266,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603491348970" />
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom" timestamp="1604010365542">
+    <state width="1860" height="213" key="GridCell.Tab.0.bottom" timestamp="1604164828791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604010365542" />
-    <state width="1877" height="213" key="GridCell.Tab.0.center" timestamp="1604010365542">
+    <state width="1860" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604164828791" />
+    <state width="1860" height="213" key="GridCell.Tab.0.center" timestamp="1604164828791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604010365542" />
-    <state width="1877" height="213" key="GridCell.Tab.0.left" timestamp="1604010365542">
+    <state width="1860" height="213" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604164828791" />
+    <state width="1860" height="213" key="GridCell.Tab.0.left" timestamp="1604164828791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604010365542" />
-    <state width="1877" height="213" key="GridCell.Tab.0.right" timestamp="1604010365542">
+    <state width="1860" height="213" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604164828791" />
+    <state width="1860" height="213" key="GridCell.Tab.0.right" timestamp="1604164828791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="213" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604010365542" />
+    <state width="1860" height="213" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604164828791" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1602780581015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1602780581015" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1603922387390">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1604010816771">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603922387390" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604010816771" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/IA$AzamonMain.ic" NAME="AzamonMain Coverage Results" MODIFIED="1602774361765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

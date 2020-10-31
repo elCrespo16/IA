@@ -1,8 +1,8 @@
-package src.com.project;
+package src.com.project.classes;
 
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
-import src.com.project.state.HeuristicEnum;
+import src.com.project.classes.enums.HeuristicEnum;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,36 +63,35 @@ public class AzamonInfo {
     }
 
     public static AzamonInfo reader() throws IOException {
-        int npaquetes; int seed; double proportion, ponderacion, almacen;
+        //variables
+        int npaquetes; int seed, operadores; double proportion, ponderacion, almacen;
         BufferedReader reader; String seedStr,heuristicoStr; Paquetes paquetes; Transporte transporte;
         HeuristicEnum heuristico = HeuristicEnum.COSTE;
         reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Numero de la semilla o [random]:"); seedStr = reader.readLine();
-        System.out.println("Numero de paquetes:"); npaquetes = Integer.parseInt(reader.readLine());
-        System.out.println("Proporcion:"); proportion = Double.parseDouble(reader.readLine());
-        boolean consulta=false;
-        do {
-            System.out.println("Heuristico [coste|felicidad]:");
-            heuristicoStr = reader.readLine();
-            if (heuristicoStr.equals("coste")) {heuristico = HeuristicEnum.COSTE;consulta=false;}
-            else if (heuristicoStr.equals("felicidad")) {heuristico = HeuristicEnum.FELICIDAD;consulta=false;}
-            else consulta=true;
-        } while (consulta);
+        System.out.print("Numero de la semilla o [random]: "); seedStr = reader.readLine();
+        if(seedStr.equals("random")) seed=(new Random()).nextInt(1_000_000);
+        else seed = Integer.parseInt(seedStr);
+
+        System.out.print("Numero de paquetes: "); npaquetes = Integer.parseInt(reader.readLine());
+        System.out.print("Proporcion: "); proportion = Double.parseDouble(reader.readLine());
+
+        System.out.print("Heuristico [coste|felicidad]: "); heuristicoStr = reader.readLine();
+        if (heuristicoStr.equals("coste")) heuristico = HeuristicEnum.COSTE;
+        else if (heuristicoStr.equals("felicidad")) heuristico = HeuristicEnum.FELICIDAD;
+
         ponderacion=1.0D;
         if (heuristico==HeuristicEnum.FELICIDAD) {
-            System.out.println("Ponderación:");
+            System.out.println("Ponderación: ");
             ponderacion = Double.parseDouble(reader.readLine());
         }
         almacen=0.25D;
-        System.out.println("Costo almacen:"); almacen = Double.parseDouble(reader.readLine());
-        if(seedStr.equals("random")) seed=(new Random()).nextInt(101);
-        else seed = Integer.parseInt(seedStr);
+        System.out.println("Costo almacen: "); almacen = Double.parseDouble(reader.readLine());
+        System.out.println("Operadores: "); operadores = Integer.parseInt(reader.readLine());
 
         paquetes = new Paquetes(npaquetes,seed);
         transporte = new Transporte(paquetes,proportion,seed);
 
-
-        return new AzamonInfo(paquetes,transporte, heuristico,ponderacion, 0x03);
+        return new AzamonInfo(paquetes,transporte, heuristico,ponderacion, operadores);
     }
 
 }

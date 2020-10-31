@@ -1,12 +1,14 @@
-package src.com.project.state;
+package src.com.project.classes.boards;
 
 import aima.search.framework.Successor;
-import src.com.project.AzamonInfo;
+import src.com.project.classes.AzamonInfo;
+import src.com.project.classes.enums.HeuristicEnum;
+import src.com.project.classes.states.AzamonState;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AzamonBoardAnneling extends AzamonBoard{
+public class AzamonBoardAnneling extends AzamonBoard {
 
     AzamonState actualState;
 
@@ -33,7 +35,7 @@ public class AzamonBoardAnneling extends AzamonBoard{
     public double getHeuristicValue(Object state) {
         //FUNCION HEURISTICA DE COSTE
         double cost = getCost((AzamonState) state);
-        if (azamonInfo.heuristico==HeuristicEnum.COSTE) return cost;
+        if (azamonInfo.heuristico== HeuristicEnum.COSTE) return cost;
         double felicidad = getFelicidad((AzamonState) state);
 
         if(felicidad > 0) return cost/Math.pow(felicidad,azamonInfo.ponderacion);

@@ -1,4 +1,4 @@
-package src.com.project.state;
+package src.com.project.classes.enums;
 
 public enum GenerateEnum {
     BASIC,

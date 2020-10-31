@@ -1,14 +1,14 @@
-package src.com.project;
+package src.com.project.classes;
 
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
-import src.com.project.state.AzamonBoard;
-import src.com.project.state.AzamonBoardAnneling;
-import src.com.project.state.AzamonState;
-import src.com.project.state.GenerateEnum;
+import src.com.project.classes.boards.AzamonBoard;
+import src.com.project.classes.boards.AzamonBoardAnneling;
+import src.com.project.classes.states.AzamonState;
+import src.com.project.classes.enums.GenerateEnum;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +17,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AzamonReader {
 
@@ -56,6 +57,8 @@ public class AzamonReader {
         fill(finalValues,aBoard,null);
 
         print(c2.getTimeInMillis()-c1.getTimeInMillis(),inicialValues,finalValues);
+
+        printPasos(search, new AzamonBoard(aInfo));
     }
 
     private static void azamonSimulatedAnnealing() throws Exception {
@@ -91,6 +94,8 @@ public class AzamonReader {
         fill(finalValues,aBoard, (AzamonState) search.getGoalState());
 
         print(c2.getTimeInMillis()-c1.getTimeInMillis(),inicialValues,finalValues);
+
+        printPasos(search, new AzamonBoardAnneling(aInfo));
     }
 
     private static Search readAnnealingSearch() throws IOException {
@@ -114,7 +119,7 @@ public class AzamonReader {
     private static void print(long ms,double[] inicialD, double[] finalD) {
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.HALF_UP);
-        System.out.println("El algoritmo tardó "+ms+" ms en ejecutarse.");
+        System.out.println("El algoritmo tardó "+ms+" ms en encontrar una solución.");
         System.out.println("State"+(char)9+"Heuristico"+(char)9+"Felicidad"+(char)9+"Coste"+(char)9+"Transporte"+(char)9+"Almacenamiento");
         System.out.print("Inicial");
         for(int i=0;i<5;++i) System.out.print(" "+(char)9+df.format(inicialD[i]));
@@ -124,6 +129,24 @@ public class AzamonReader {
         System.out.println();
     }
 
+    private static void printPasos(Search search,AzamonBoard aBoardTest) throws IOException {
+        String option;
+        System.out.print("Quieres ver la evolucion del coste? [s|n]:"); option= reader.readLine();
+        if (option.equals("n")) return;
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        List list = search.getPathStates();
+        aBoardTest.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
+        System.out.println("Pasos" + (char) 9 + "Coste");
+        System.out.println(0+" " + (char) 9 + df.format(aBoardTest.getCost(null)));
+        int paso=1;
+        for(Object action: list) {
+            if (action!=null) ((AzamonState)action).updateBoard(aBoardTest);
+            System.out.println(paso+" "+ (char) 9 + df.format(aBoardTest.getCost(null)));
+            ++paso;
+        }
+        System.out.println();
+    }
     public static void execute() throws Exception
     {
         System.out.println("-- OPCION PERSONALIZADA --");

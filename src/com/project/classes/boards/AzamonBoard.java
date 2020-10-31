@@ -1,11 +1,16 @@
-package src.com.project.state;
+package src.com.project.classes.boards;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
 import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
-import src.com.project.AzamonInfo;
+import src.com.project.classes.AzamonInfo;
+import src.com.project.classes.enums.GenerateEnum;
+import src.com.project.classes.enums.HeuristicEnum;
+import src.com.project.classes.states.AzamonMoveState;
+import src.com.project.classes.states.AzamonState;
+import src.com.project.classes.states.AzamonSwapState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +54,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     public double getHeuristicValue(Object state) {
         //FUNCION HEURISTICA DE COSTE
         double cost = getCost((AzamonState) state);
-        if (azamonInfo.heuristico==HeuristicEnum.COSTE) return cost;
+        if (azamonInfo.heuristico== HeuristicEnum.COSTE) return cost;
         double felicidad = getFelicidad((AzamonState) state);
 
         if(felicidad > 0) return cost/Math.pow(felicidad,azamonInfo.ponderacion);
@@ -57,7 +62,7 @@ public class AzamonBoard implements SuccessorFunction, HeuristicFunction {
     }
     //GETTERS
 
-    int getAssignedOffer(int pack) {return assignedOffer[pack];}
+    public int getAssignedOffer(int pack) {return assignedOffer[pack];}
 
     public double getCost(Object state) {
         AzamonState oldState = updateState((AzamonState) state);
