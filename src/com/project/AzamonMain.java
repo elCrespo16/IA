@@ -44,6 +44,9 @@ public class AzamonMain {
             case (String) "noveno":
                 Experimentos.noveno();
                 break;
+            case (String) "comparativa":
+                Experimentos.comparativa();
+                break;
             default:
                 AzamonReader.execute();
                 break;

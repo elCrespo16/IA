@@ -81,12 +81,12 @@ public class AzamonInfo {
 
         ponderacion=1.0D;
         if (heuristico==HeuristicEnum.FELICIDAD) {
-            System.out.println("Ponderación: ");
+            System.out.print("Ponderación: ");
             ponderacion = Double.parseDouble(reader.readLine());
         }
         almacen=0.25D;
-        System.out.println("Costo almacen: "); almacen = Double.parseDouble(reader.readLine());
-        System.out.println("Operadores: "); operadores = Integer.parseInt(reader.readLine());
+        System.out.print("Costo almacen: "); almacen = Double.parseDouble(reader.readLine());
+        System.out.print("Operadores: "); operadores = Integer.parseInt(reader.readLine());
 
         paquetes = new Paquetes(npaquetes,seed);
         transporte = new Transporte(paquetes,proportion,seed);

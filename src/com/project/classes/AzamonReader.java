@@ -39,7 +39,7 @@ public class AzamonReader {
         //READERS
         AzamonInfo aInfo = AzamonInfo.reader();
         AzamonBoard aBoard = new AzamonBoard(aInfo);
-        System.out.print("Estat inicial [basic|priority]: "); option=reader.readLine();
+        System.out.print("Estado inicial [basic|priority]: "); option=reader.readLine();
         if (option.equals("basic")) inicialState = GenerateEnum.BASIC;
         else if (option.equals("priority")) inicialState = GenerateEnum.PRIORITY_ORDERED;
         aBoard.generateInicialState(inicialState);
@@ -131,18 +131,19 @@ public class AzamonReader {
 
     private static void printPasos(Search search,AzamonBoard aBoardTest) throws IOException {
         String option;
-        System.out.print("Quieres ver la evolucion del coste? [s|n]:"); option= reader.readLine();
+        System.out.print("Quieres ver la evolucion del coste? [s|n]: "); option= reader.readLine();
         if (option.equals("n")) return;
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.HALF_UP);
         List list = search.getPathStates();
         aBoardTest.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
-        System.out.println("Pasos" + (char) 9 + "Coste");
+        System.out.println("Pasos" + (char) 9 + "Coste"+ (char) 9 + "Felicidad");
         System.out.println(0+" " + (char) 9 + df.format(aBoardTest.getCost(null)));
         int paso=1;
         for(Object action: list) {
             if (action!=null) ((AzamonState)action).updateBoard(aBoardTest);
-            System.out.println(paso+" "+ (char) 9 + df.format(aBoardTest.getCost(null)));
+            System.out.println(paso+" "+ (char) 9 + df.format(aBoardTest.getCost(null))
+                    +" "+ (char) 9 + df.format(aBoardTest.getFelicidad(null)));
             ++paso;
         }
         System.out.println();

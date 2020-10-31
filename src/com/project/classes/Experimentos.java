@@ -333,4 +333,32 @@ public class Experimentos {
         c1.setTime(d1); c2.setTime(d2);
         System.out.println(df.format(aBoard.getCost(null))+" "+(char)9+(c2.getTimeInMillis() - c1.getTimeInMillis())+ " ms");
     }
+
+    public static void comparativa() throws Exception {
+        ArrayList<Integer> seeds = generarSeeds();
+        int paqs[] = {100, 150, 200};
+        double props[] = {1.2D, 1.5D, 2.0D};
+        for(int paq : paqs) {
+            for (double prop : props) {
+                System.out.println(paq + " paq - " + prop + " prop");
+                System.out.println("seed" + (char) 9 + "Hill" + (char) 9 + "Annealing");
+                for (int seed : seeds) {
+                    Paquetes paquetes = new Paquetes(paq, seed);
+                    Transporte transporte = new Transporte(paquetes, prop, seed);
+                    AzamonInfo aInfo = new AzamonInfo(paquetes, transporte, HeuristicEnum.COSTE);
+                    AzamonBoard aBoardHill = new AzamonBoard(aInfo);
+                    AzamonBoard aBoardAnn = new AzamonBoardAnneling(aInfo);
+                    aBoardHill.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
+                    aBoardAnn.generateInicialState(GenerateEnum.PRIORITY_ORDERED);
+                    Problem problemHill = new Problem(null, aBoardHill, null, aBoardHill);
+                    Problem problemAnn = new Problem(null, aBoardAnn, null, aBoardAnn);
+                    Search searchHill = new HillClimbingSearch();
+                    Search searchAnn = new SimulatedAnnealingSearch(200_000, 500, 300, 0.0003);
+                    SearchAgent agentHill = new SearchAgent(problemHill, searchHill);
+                    SearchAgent agentAnn = new SearchAgent(problemAnn, searchAnn);
+                    System.out.println(seed + " " + (char) 9 + df.format(aBoardHill.getCost(null)) + " " + (char) 9 + df.format(aBoardAnn.getCost(searchAnn.getGoalState())));
+                }
+            }
+        }
+    }
 }
